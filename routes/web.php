@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+route::resource('productos','ProductosController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

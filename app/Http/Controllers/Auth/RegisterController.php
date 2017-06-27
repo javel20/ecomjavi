@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Ecomjavi\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use Ecomjavi\User;
+use Ecomjavi\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
