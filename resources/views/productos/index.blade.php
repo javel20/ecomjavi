@@ -31,7 +31,10 @@
                     <td>{{$prod->estado}}</td>
                     <td>{{$prod->descripcion}}</td>
                    
-
+                    <td>
+                        <a href="{{url('/productos/'.$prod->id.'/edit')}}">Editar</a>
+                        @include('productos.delete',['producto' => $producto])
+                    </td>
                     
 
                 </tr>

@@ -3,7 +3,7 @@
 
             <div class="form-group col-md-6">
             <label>Titulo:</label>
-                {{Form::text('titulo',$producto->titulo,['class' => 'form-control', 'placeholder'=>'titulo','maxlength'=>'8'])}}
+                {{Form::text('titulo',$producto->titulo,['class' => 'form-control', 'placeholder'=>'titulo','maxlength'=>'100'])}}
                 
                 @if($errors->has('titulo'))
                     <span style='color:red;'>{{$errors->first('titulo')}}</span>
@@ -39,9 +39,9 @@
             <label>Estado</label>
                 <select class="form-control" name="estado" id="estado" value={{$producto->estado}}>
                     <option value="">--seleccionar--</option>
-                    <option value="Contratado" <?php echo ($producto->estado=="Contratado" ? 'selected="selected"' : '');?>>Contratado</option>
-                    <option value="Contrado Finalziado" <?php echo ($producto->estado=="Contrado Finalziado" ? 'selected="selected"' : '');?>>Contrado Finalziado</option>
-                    <option value="Expulsado" <?php echo ($producto->estado=="Expulsado" ? 'selected="selected"' : '');?>>Expulsado</option>
+                    <option value="Habilitado" <?php echo ($producto->estado=="Habilitado" ? 'selected="selected"' : '');?>>Habilitado</option>
+                    <option value="Escaso" <?php echo ($producto->estado=="Escaso" ? 'selected="selected"' : '');?>>Escaso</option>
+                    <option value="Retirado" <?php echo ($producto->estado=="Retirado" ? 'selected="selected"' : '');?>>Retirado</option>
                 </select>
 
                 @if($errors->has('estado'))

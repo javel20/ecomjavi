@@ -51,8 +51,8 @@ class ProductosController extends Controller
     {
         $this->validate($request,[
             
-            'titulo' => 'required|min:3|max:30|regex:/^[óáéíúña-z-\s]+$/i|unique:productos',  
-            // 'precio'=> 'required',
+            'titulo' => 'required|min:3|max:100|regex:/^[óáéíúña-z-\s]+$/i|unique:productos',  
+            'precio'=> 'required',
             'descripcion' => 'max:100',
 
         ]); 
@@ -91,7 +91,10 @@ class ProductosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $producto = Producto::find($id);
+        return view('productos.edit')->with([
+           'producto' => $producto,
+        ]);
     }
 
     /**
@@ -103,7 +106,28 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $this->validate($request,[
+            
+            'titulo' => 'required|min:3|max:30|regex:/^[óáéíúña-z-\s]+$/i',  
+            'precio'=> 'required',
+            'descripcion' => 'max:100',
+
+        ]); 
+
+        $producto = Producto::find($id);
+
+        $producto->titulo = $request->titulo;
+        $producto->precio = $request->precio;
+        $producto->estado = $request->estado;
+        $producto->descripcion = $request->descripcion;
+        $producto->user_id = Auth::user()->id;
+
+        if($producto->save()){
+            return redirect("/productos");
+        }else{
+            return view("/productos.edit",["producto" => $producto]);
+        }
     }
 
     /**
@@ -114,6 +138,7 @@ class ProductosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Producto::Destroy($id);
+        return redirect('/productos');
     }
 }
