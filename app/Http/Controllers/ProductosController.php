@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Ecomjavi\Http\Requests;
 
 use Ecomjavi\Producto;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class ProductosController extends Controller
@@ -17,9 +19,9 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $productos = Producto::all();
+        $producto = Producto::all();
         return view("productos.index")->with([
-            'productos' => $productos,
+            'producto' => $producto,
 
         ]);
     }
@@ -31,7 +33,12 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        //
+        $producto = new Producto;
+
+        return view("productos.create")->with([
+             'producto' => $producto, 
+
+        ]);
     }
 
     /**
@@ -42,7 +49,27 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            
+            'titulo' => 'required|min:3|max:30|regex:/^[óáéíúña-z-\s]+$/i|unique:productos',  
+            // 'precio'=> 'required',
+            'descripcion' => 'max:100',
+
+        ]); 
+
+        $producto = new Producto;
+
+        $producto->titulo = $request->titulo;
+        $producto->precio = $request->precio;
+        $producto->estado = $request->estado;
+        $producto->descripcion = $request->descripcion;
+        $producto->user_id = Auth::user()->id;
+
+        if($producto->save()){
+            return redirect("/productos");
+        }else{
+            return view("/productos.create",["producto" => $producto]);
+        }
     }
 
     /**
