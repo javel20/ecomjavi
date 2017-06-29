@@ -31,7 +31,7 @@
                     
                     <p>{{$producto->descripcion}}</p>
                     <p>
-                        @include("carro_usuario_compra_producto.form",["producto",$producto])
+                        @include("carro_usuario_compra_productos.form",["producto" => $producto])
                     </p>
                 </div>
                 </div>
