@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 route::resource('productos','ProductosController');
+route::resource('carro_usuario_compras_productos','Carro_usuario_comprasController',[
+    'only' => ['store', 'destroy']
+]);
 
 Auth::routes();
 

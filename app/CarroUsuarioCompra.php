@@ -8,9 +8,21 @@ class CarroUsuarioCompra extends Model
 {
     protected $fillable = ["estado"];
 
+    public function carro_usuario_compraProductos(){
+
+        return $this->hasMany('Ecomjavi\Carro_usuario_compraProducto');
+
+    }
+
+    public function productos(){
+
+        return $this->belongsToMany('Ecomjavi\Producto','carro_usuario_compra_productos');
+
+    }
+
 
     public function cantidadProductos(){
-        return $this->id;
+        return $this->productos()->count();
     }
 
 
