@@ -16,7 +16,7 @@
 
                 </a>
 
-                @include('productos.delete',['producto' => $producto])
+               @include('productos.delete',['producto' => $producto])
 
             </div>
         

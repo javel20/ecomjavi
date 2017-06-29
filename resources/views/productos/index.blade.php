@@ -24,15 +24,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($producto as $prod)
+                @foreach($productos as $producto)
                 <tr>
-                    <td>{{$prod->titulo}}</td>
-                    <td>{{$prod->precio}}</td>
-                    <td>{{$prod->estado}}</td>
-                    <td>{{$prod->descripcion}}</td>
+                    <td>{{$producto->titulo}}</td>
+                    <td>{{$producto->precio}}</td>
+                    <td>{{$producto->estado}}</td>
+                    <td>{{$producto->descripcion}}</td>
                    
                     <td>
-                        <a href="{{url('/productos/'.$prod->id.'/edit')}}">Editar</a>
+                        <a href="{{url('/productos/'.$producto->id.'/edit')}}">Editar</a>
                         @include('productos.delete',['producto' => $producto])
                     </td>
                     
