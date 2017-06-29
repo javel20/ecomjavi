@@ -47,7 +47,7 @@
                             <a href="">
                                 Mi carrito
                                 <span>
-                                    
+                                    {{$carro->cantidadProductos()}}
                                 </span>
                             </a>
                         </li>
