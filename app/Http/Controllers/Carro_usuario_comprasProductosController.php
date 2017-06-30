@@ -12,10 +12,10 @@ class Carro_usuario_comprasProductosController extends Controller
 
     public function store(Request $request)
     {
-        dd("sdasd");
+        // dd("sdasd");
         $carro_usuario_compra_id = \Session::get('carro_usuario_compra_id');
 
-        $carro = CarroUsuarioCompra::buscarOCrearPorSessionId($carro_usuario_compra_id);
+        $carro_usuario_compra = CarroUsuarioCompra::buscarOCrearPorSessionId($carro_usuario_compra_id);
 
         $response = Carro_usuario_compraProducto::create([
             "carro_usuario_compra_id" =>  $carro_usuario_compra->id,

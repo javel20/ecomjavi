@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 route::resource('productos','ProductosController');
-route::resource('carro_usuario_compra_productos','Carro_usuario_comprasController',[
+route::resource('carro_usuario_compra_productos','Carro_usuario_comprasProductosController', [
     'only' => ['store', 'destroy']
 ]);
 
