@@ -25,6 +25,10 @@ class CarroUsuarioCompra extends Model
         return $this->productos()->count();
     }
 
+    public function total(){
+        return $this->productos()->sum("precio");
+    }
+
 
     public static function buscarOCrearPorSessionId($carro_usuario_compra_id){
 

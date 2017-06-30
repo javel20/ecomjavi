@@ -22,7 +22,7 @@ class Carro_usuario_comprasProductosController extends Controller
             "producto_id" => $request->producto_id,
         ]);
         // dd($response);
-        if(false){
+        if($response){
             return redirect('/carrito');
         }else{
             return back();

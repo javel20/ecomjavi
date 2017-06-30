@@ -15,10 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-route::resource('productos','ProductosController');
-route::resource('carro_usuario_compra_productos','Carro_usuario_comprasProductosController', [
+Route::resource('productos','ProductosController');
+Route::resource('carro_usuario_compra_productos','Carro_usuario_comprasProductosController', [
     'only' => ['store', 'destroy']
 ]);
+Route::get('/carrito','Carro_usuario_comprasController@index');
 
 Auth::routes();
 

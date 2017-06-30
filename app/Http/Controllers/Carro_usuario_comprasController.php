@@ -3,6 +3,9 @@
 namespace Ecomjavi\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Ecomjavi\Http\Requests;
+
+use Ecomjavi\CarroUsuarioCompra;
 
 class Carro_usuario_comprasController extends Controller
 {
@@ -13,7 +16,15 @@ class Carro_usuario_comprasController extends Controller
      */
     public function index()
     {
-        //
+        $carro_usuario_compra_id = \Session::get('carro_usuario_compra_id');
+
+        $carro = CarroUsuarioCompra::buscarOCrearPorSessionId($carro_usuario_compra_id);
+
+        $productos = $carro->productos()->get();
+
+        $total = $carro->total();
+
+        return view("carro_usuario_compras.index",["productos" => $productos, "total" => $total]);
     }
 
     /**

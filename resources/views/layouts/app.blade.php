@@ -44,7 +44,7 @@
                         <!-- Authentication Links -->
 
                         <li>
-                            <a href="">
+                            <a href="{{url('/carrito')}}">
                                 Mi carrito
                                 <span>
                                     {{$carro->cantidadProductos()}}
