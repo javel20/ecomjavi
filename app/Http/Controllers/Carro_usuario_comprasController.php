@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Ecomjavi\Http\Requests;
 
 use Ecomjavi\CarroUsuarioCompra;
+use Ecomjavi\PayPal;
 
 class Carro_usuario_comprasController extends Controller
 {
@@ -20,11 +21,15 @@ class Carro_usuario_comprasController extends Controller
 
         $carro = CarroUsuarioCompra::buscarOCrearPorSessionId($carro_usuario_compra_id);
 
-        $productos = $carro->productos()->get();
+        $paypal = new PayPal($carro_usuario_compras);
 
-        $total = $carro->total();
+        return "";
 
-        return view("carro_usuario_compras.index",["productos" => $productos, "total" => $total]);
+        // $productos = $carro->productos()->get();
+
+        // $total = $carro->total();
+
+        // return view("carro_usuario_compras.index",["productos" => $productos, "total" => $total]);
     }
 
     /**

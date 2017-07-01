@@ -166,6 +166,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Ecomjavi\Providers\CarroUsuarioCompraProvider::class,
 
+        Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -231,6 +233,7 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
       	'Html' => Collective\Html\HtmlFacade::class,
+        'PaypalPayment' => Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
 
     ],
 
