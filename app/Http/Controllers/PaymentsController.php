@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Ecomjavi\Http\Requests;
 
 use Ecomjavi\CarroUsuarioCompra;
-use Ecomjavi\PayPal;
+use Ecomjavi\Paypal;
 
 class PaymentsController extends Controller
 {
@@ -19,6 +19,14 @@ class PaymentsController extends Controller
         $paypal = new Paypal($carro_usuario_compra);
 
         dd($paypal->execute($request->paymentId,$request->PayerID));
+
+        $response = $paypal->execute($request->paymentId,$request->PayerID);
+
+        if($response->state == "approved"){
+            $order = Orden::crearRespuestaPaypal($response, $carrito_usuario_compra);
+        }
+
+        return view("carro_usuario_compras.completed",["carro_usuario_compra" => $carro_usuario_compra, "orden" => $orden]);
 
     }
 }

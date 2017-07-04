@@ -24,17 +24,17 @@ class Carro_usuario_comprasController extends Controller
         $carro = CarroUsuarioCompra::buscarOCrearPorSessionId($carro_usuario_compra_id);
             // dd($carro);
 
-        $paypal = new PayPal($carro);
+        // $paypal = new PayPal($carro);
 
-        $payment = $paypal->generate();
+        // $payment = $paypal->generate();
 
-        return redirect($payment->getApprovalLink());
+        // return redirect($payment->getApprovalLink());
 
-        // $productos = $carro->productos()->get();
+        $productos = $carro->productos()->get();
 
-        // $total = $carro->total();
+        $total = $carro->total();
 
-        // return view("carro_usuario_compras.index",["productos" => $productos, "total" => $total]);
+        return view("carro_usuario_compras.index",["productos" => $productos, "total" => $total]);
     }
 
     /**
