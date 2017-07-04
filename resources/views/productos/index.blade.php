@@ -9,7 +9,7 @@
 
 
 
-    <div class="table-responsive">
+    <div class="container">
 
         <table class="table table-bordered">
             <thead>

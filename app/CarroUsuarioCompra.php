@@ -15,7 +15,7 @@ class CarroUsuarioCompra extends Model
     }
 
     public function productos(){
-
+        
         return $this->belongsToMany('Ecomjavi\Producto','carro_usuario_compra_productos');
 
     }
@@ -27,6 +27,12 @@ class CarroUsuarioCompra extends Model
 
     public function total(){
         return $this->productos()->sum("precio");
+    }
+
+    public function totalUSD(){
+
+         return $this->productos()->sum("precio") / 100;
+  
     }
 
 

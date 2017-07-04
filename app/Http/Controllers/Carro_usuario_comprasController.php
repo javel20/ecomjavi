@@ -7,6 +7,7 @@ use Ecomjavi\Http\Requests;
 
 use Ecomjavi\CarroUsuarioCompra;
 use Ecomjavi\PayPal;
+use Ecomjavi\Producto;
 
 class Carro_usuario_comprasController extends Controller
 {
@@ -17,13 +18,17 @@ class Carro_usuario_comprasController extends Controller
      */
     public function index()
     {
+
         $carro_usuario_compra_id = \Session::get('carro_usuario_compra_id');
 
         $carro = CarroUsuarioCompra::buscarOCrearPorSessionId($carro_usuario_compra_id);
+            // dd($carro);
 
-        $paypal = new PayPal($carro_usuario_compras);
+        $paypal = new PayPal($carro);
 
-        return "";
+        $payment = $paypal->generate();
+
+        return redirect($payment->getApprovalLink());
 
         // $productos = $carro->productos()->get();
 
