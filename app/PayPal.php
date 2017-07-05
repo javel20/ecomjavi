@@ -37,6 +37,8 @@ class PayPal{
             exit(1);
         }
 
+        return $payment;
+
     }
 
     public function payer(){
@@ -61,7 +63,7 @@ class PayPal{
                                 ->setAmount($this->amount())
                                 ->setItemList($this->items())
                                 ->setDescription("Compra en proceso")
-                                ->setInvoiveNumber(uniqid());
+                                ->setInvoiceNumber(uniqid());
 
 
     }
@@ -69,7 +71,7 @@ class PayPal{
     public function items(){
 
         $items = [];
-        $productos = $this->carro_usuario_compras->productos()->get();
+        $productos = $this->carro_usuario_compra->productos()->get();
 
         foreach ($productos as $producto){
 
@@ -96,7 +98,7 @@ class PayPal{
         $execution = \PaypalPayment::PaymentExecution()
                                 ->setPayerId($payerId);
 
-        return $payment->execute($execution,$this->_apiCOntext);
+        return $payment->execute($execution,$this->_apiContext);
 
     }
 
