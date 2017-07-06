@@ -17,12 +17,12 @@ class CreateOrdensTable extends Migration
             $table->increments('id');
             $table->integer('carro_usuario_compra_id')->unsigned();
             $table->foreign('carro_usuario_compra_id')->references('id')->on('carro_usuario_compras');
-            $table->string('linea1');
-            $table->string('linea2')->nullable(true);
+            $table->string('direccion1');
+            $table->string('direccion2')->nullable(true);
             $table->string('ciudad');
             $table->string('codigo_postal');
             $table->string('codigo_pais');
-            $table->string('estado');
+            $table->string('estado_hogar');
             $table->string('nombre_receptor');
             $table->string('email');
             $table->string('estado')->default("creado");

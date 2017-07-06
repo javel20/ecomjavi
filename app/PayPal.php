@@ -5,7 +5,7 @@ namespace Ecomjavi;
 class PayPal{
 
     private $_apiContext;
-    private $carro_usuario_compras;
+    private $carro_usuario_compra;
     private $_ClientId = 'Aa9aUcElGCRSSw8iIt8RnaDXGhPatDd_IIKpxpQwTmiqT0WIcECzZMPcZCaZa8qJCCDoan1rY7NwPkXi';
     private $_ClientSecret = 'EN0o-pto15CKPWZTRTrYg2MRhdn_gcSY8fLVi8PLjrgcSnkFWly1spQ_1wjW2ZI6RreQRDL-B8c9-xJj';
 
@@ -27,7 +27,7 @@ class PayPal{
         $payment = \PaypalPayment::payment()->setIntent("sale")
                                             ->setPayer($this->payer())
                                             ->setTransactions([$this->transaction()])
-                                            ->setRedirectUrls($this->redirectUrLs());
+                                            ->setRedirectUrls($this->redirectUrls());
 
         try{
 
@@ -62,7 +62,7 @@ class PayPal{
         return \PaypalPayment::transaction()
                                 ->setAmount($this->amount())
                                 ->setItemList($this->items())
-                                ->setDescription("Compra en proceso")
+                                ->setDescription("Compra en systemsje")
                                 ->setInvoiceNumber(uniqid());
 
 
@@ -91,7 +91,7 @@ class PayPal{
     }
 
 
-    public function execte($paymentId, $payerId){
+    public function execute($paymentId, $payerId){
 
         $payment = \PaypalPayment::getById($paymentId,$this->_apiContext);
 

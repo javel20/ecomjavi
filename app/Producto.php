@@ -13,17 +13,17 @@ class Producto extends Model
 
     // }
 
-    public function carros(){
+    // public function carros(){
 
-        return $this->belongsToMany('Ecomjavi\CarroUsuarioCompra','carro_usuario_compra_productos');
+    //     return $this->belongsToMany('Ecomjavi\CarroUsuarioCompra','carro_usuario_compra_productos');
 
-    }
+    // }
 
 
 
     public function paypalItem(){
 
-        return \paypalPayment::item()->setName($this->titulo)
+        return \PaypalPayment::item()->setName($this->titulo)
                                     ->setDescription($this->descripcion)
                                     ->setCurrency('USD')
                                     ->setQuantity(1)
