@@ -16,13 +16,36 @@ class Carro_usuario_comprasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // dd($request->all());
+        // $carro_usuario_compra = $request->carro_usuario_compra;
 
         $carro_usuario_compra_id = \Session::get('carro_usuario_compra_id');
 
         $carro_usuario_compra = CarroUsuarioCompra::buscarOCrearPorSessionId($carro_usuario_compra_id);
             // dd($carro);
+
+        // $paypal = new PayPal($carro_usuario_compra);
+
+        // $payment = $paypal->generate();
+
+        // return redirect($payment->getApprovalLink());
+
+        $productos = $carro_usuario_compra->productos()->get();
+
+        $total = $carro_usuario_compra->total();
+
+        return view("carro_usuario_compras.index",["productos" => $productos, "total" => $total]);
+    }
+
+    public function checkout(Request $request){
+
+        // dd("asdsa");
+
+        $carro_usuario_compra_id = \Session::get('carro_usuario_compra_id');
+
+        $carro_usuario_compra = CarroUsuarioCompra::buscarOCrearPorSessionId($carro_usuario_compra_id);
 
         $paypal = new PayPal($carro_usuario_compra);
 
@@ -30,11 +53,6 @@ class Carro_usuario_comprasController extends Controller
 
         return redirect($payment->getApprovalLink());
 
-        // $productos = $carro_usuario_compra->productos()->get();
-
-        // $total = $carro_usuario_compra->total();
-
-        // return view("carro_usuario_compras.index",["productos" => $productos, "total" => $total]);
     }
 
     /**

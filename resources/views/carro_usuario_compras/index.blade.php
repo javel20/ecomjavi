@@ -35,8 +35,13 @@
             </tr>
 
         </tbody>
+
     
     </table>
+    
+        <div class="text-right">
+            @include('carro_usuario_compras.form')
+        </div>
 
 </div>
 

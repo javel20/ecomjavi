@@ -20,6 +20,7 @@ Route::resource('carro_usuario_compra_productos','Carro_usuario_comprasProductos
     'only' => ['store', 'destroy']
 ]);
 Route::get('/carrito','Carro_usuario_comprasController@index');
+Route::post('/carrito','Carro_usuario_comprasController@checkout');
 Route::get('/payments/store','PaymentsController@store');
 
 Auth::routes();

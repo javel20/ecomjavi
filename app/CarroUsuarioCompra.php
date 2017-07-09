@@ -42,7 +42,7 @@ class CarroUsuarioCompra extends Model
             return CarroUsuarioCompra::buscarPorSession($carro_usuario_compra_id);
         else
             return CarroUsuarioCompra::crearConSession();
-
+            
     }
 
     public static function buscarPorSession($carro_usuario_compra_id){

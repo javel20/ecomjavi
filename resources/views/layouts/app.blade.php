@@ -47,7 +47,7 @@
                             <a href="{{url('/carrito')}}">
                                 Mi carrito
                                 <span>
-                                    {{$carro->cantidadProductos()}}
+                                    {{$carro_usuario_compra->cantidadProductos()}}
                                 </span>
                             </a>
                         </li>

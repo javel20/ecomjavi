@@ -18,11 +18,13 @@ class CarroUsuarioCompraProvider extends ServiceProvider
 
             $carro_usuario_compra_id = \Session::get('carro_usuario_compra_id');
 
-            $carro = CarroUsuarioCompra::buscarOCrearPorSessionId($carro_usuario_compra_id);
 
-            \Session::put("carro_usuario_compra_id", $carro->id);
+            $carro_usuario_compra = CarroUsuarioCompra::buscarOCrearPorSessionId($carro_usuario_compra_id);
+            
 
-            $view->with("carro", $carro);
+            \Session::put("carro_usuario_compra_id", $carro_usuario_compra->id);
+
+            $view->with("carro_usuario_compra", $carro_usuario_compra);
 
         });
     }

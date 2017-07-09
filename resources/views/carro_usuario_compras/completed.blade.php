@@ -10,7 +10,7 @@
 
     <div class="">
     
-        <h3>Tu pago fue procesado <span>{{$order->stado}}</span></h3>
+        <h3>Tu pago fue procesado <span>{{$orden->estado}}</span></h3>
     
     </div>
 

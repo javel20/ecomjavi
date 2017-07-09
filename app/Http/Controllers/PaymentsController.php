@@ -17,19 +17,19 @@ class PaymentsController extends Controller
 
         $carro_usuario_compra = CarroUsuarioCompra::buscarOCrearPorSessionId($carro_usuario_compra_id);
 
-        $paypal = new Paypal($carro_usuario_compra);
+        $paypal = new Paypal($carro_usuario_compra);    
 
-        dd($paypal->execute($request->paymentId,$request->PayerID));
+        // dd($paypal->execute($request->paymentId,$request->PayerID));
 
-        // $response = $paypal->execute($request->paymentId,$request->PayerID);
+        $response = $paypal->execute($request->paymentId,$request->PayerID);
 
-        // if($response->state == "approved"){
-        //     $ordens = Orden::crearRespuestaPaypal($response, $carro_usuario_compra);
-        // }
+        if($response->state == "approved"){
+            $orden = Orden::crearRespuestaPaypal($response, $carro_usuario_compra);
+            // dd($orden);
+        }
 
-        // dd($orden);
 
-        // return view("carro_usuario_compras.completed",["carro_usuario_compra" => $carro_usuario_compra, "orden" => $orden]);
+        return view("carro_usuario_compras.completed",["carro_usuario_compra" => $carro_usuario_compra, "orden" => $orden]);
 
     }
 }
