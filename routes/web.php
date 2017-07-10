@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+// Route::get('/','MainController@home');
 
 Route::resource('productos','ProductosController');
 Route::resource('carro_usuario_compra_productos','Carro_usuario_comprasProductosController', [
@@ -26,3 +28,4 @@ Route::get('/payments/store','PaymentsController@store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
